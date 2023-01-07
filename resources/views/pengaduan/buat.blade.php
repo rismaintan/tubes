@@ -1,4 +1,4 @@
-@extends('header')
+@extends('layouts.header')
 @section('content')
 
 <div class="breadcrumb-section breadcrumb-bg">
@@ -19,7 +19,7 @@
 		<div class="container">
       <div id="form_status"></div>
       <div class="contact-form">
-        <form action="/pengaduan" method="POST" id="fruitkha-contact" enctype="multipart/form-data" onsubmit="return valid_datas( this );">
+        <form action="{{ route('pengaduan.store') }}" method="POST" id="fruitkha-contact" enctype="multipart/form-data" onsubmit="return valid_datas( this );">
           @csrf
           <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
           

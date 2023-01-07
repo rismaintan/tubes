@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PelaporanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PenemuanController;
 
 
 /*
@@ -17,9 +19,7 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('pengaduan', [PengaduanController::class, 'pengaduan'])->name('pengaduan');
 Route::get('preregister', [UserController::class, 'preregister'])->name('preregister');
@@ -31,4 +31,4 @@ Route::post('profile', [UserController::class, 'profile'])->name('profile');
 Route::get('logout', [UserController::class, 'logout'])->name('logout');
 
 Route::resource('pengaduan', PengaduanController::class);
-Route::resource('pelaporan', PelaporanController::class);
+Route::resource('penemuan', PenemuanController::class);

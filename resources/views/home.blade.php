@@ -1,4 +1,4 @@
-@extends('header')
+@extends('layouts.header')
 @section('content')
 	
 	<!-- hero area -->
@@ -33,22 +33,24 @@
 					</div>
 				</div>
 				<div class="row">
+					@foreach($pengaduan as $data)
 					<div class="col-lg-4 col-md-6">
 						<div class="single-latest-news">
 							
-								<a href="/image/">
+								<!-- image -->
 								</a>
 								<div class="news-text-box">
-									<h3><a href="#"></a></h3>
+									<h3><a href="#">{{ $data->namaBarang }}</a></h3>
 									<p class="blog-meta">
-										<span class="author"><i class="fas fa-user"></i> </span>
-										<span class="date"><i class="fas fa-calendar"></i></span>
+										<span class="author"><i class="fas fa-phone"></i>{{ $data->kontak }}</span>
+										<span class="date"><i class="fas fa-map-marker"></i>{{ $data->lokasiTerakhir }}</span>
 									</p>
-									<p class="excerpt"></p>
-									<a href="/pengaduan/" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
+									<p class="excerpt">{{ $data->deskripsi }}</p>
+									<a href="{{ route('pengaduan.show', $data->id) }}" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
 								</div> 
 						</div>
 					</div>
+					@endforeach
 					{{-- batas bawah --}}
 					</div>
 						<div class="row">
